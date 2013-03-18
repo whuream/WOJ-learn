@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<vector>
 
@@ -10,7 +10,7 @@ vector<string> data(501);
 
 string _add(string a,string b)
 {
-	//´®_a³¤¶È´ó
+	//ä¸²_aé•¿åº¦å¤§
 	string *_a=&a,*_b=&b;
 	if(a.length()<b.length())
 	{

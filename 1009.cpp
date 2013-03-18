@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<vector>
 #include<list>
 
@@ -25,7 +25,7 @@ int main()
 
 		int i,j,min,u;
 
-		//³õÊ¼»¯
+		//åˆå§‹åŒ–
 		for(i=0;i<n;i++)
 			for(j=0;j<n;j++)
 			{
@@ -33,7 +33,7 @@ int main()
 				else data[i][j].cost=0;
 			}
 
-		//Êı¾İÊäÈë
+		//æ•°æ®è¾“å…¥
 		for(i=0;i<m;i++)
 		{
 			int a,b;
@@ -48,7 +48,7 @@ int main()
 		int plovers,slovers;
 		scanf("%d %d",&plovers,&slovers);
 		 
-		//Êı¾İ´¦Àí
+		//æ•°æ®å¤„ç†
 		for(i=0;i<n;i++)
 			for(j=0;j<n;j++)
 				if((data[i][j].pguard >= plovers)||(data[i][j].sguard >=slovers))

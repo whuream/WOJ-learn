@@ -1,10 +1,10 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 
 
 /*
-			ÕâÌâËãÊÇË®¹ıÈ¥ÁË£¬£¬¿ª2500ÍòÊı×é£¬£¬£¬ÆäÊµÓ¦¸Ã¿ª3600ÍòµÄÊı×éÔÙÑ¹Ëõ³É1800ÍòµÄ¡£¡£¡£
+			è¿™é¢˜ç®—æ˜¯æ°´è¿‡å»äº†ï¼Œï¼Œå¼€2500ä¸‡æ•°ç»„ï¼Œï¼Œï¼Œå…¶å®åº”è¯¥å¼€3600ä¸‡çš„æ•°ç»„å†å‹ç¼©æˆ1800ä¸‡çš„ã€‚ã€‚ã€‚
 */
 
 void similar(int a,int b,short int **common,char **name)
@@ -45,7 +45,7 @@ int main()
 
 	short int **common;
 	common=(short int **)malloc(sizeof(short int *)*5001);
-	for(i=0;i<5001;i++) common[i]=(short int *)malloc(sizeof(short int)*5001);    //3600Íò£¬ÄÚ´æ±¬µô
+	for(i=0;i<5001;i++) common[i]=(short int *)malloc(sizeof(short int)*5001);    //3600ä¸‡ï¼Œå†…å­˜çˆ†æ‰
 	for(i=0;i<5001;i++)
 		for(i1=0;i1<5001;i1++)
 			common[i][i1]=-1;
@@ -60,7 +60,7 @@ int main()
 	{
 		int id;
 		char tmp[1001];
-		scanf("%d%s",&id,tmp);  //×Ö·û´®ÖĞ²»ÄÜÓĞ¿Õ¸ñ£¡£¡£¡
+		scanf("%d%s",&id,tmp);  //å­—ç¬¦ä¸²ä¸­ä¸èƒ½æœ‰ç©ºæ ¼ï¼ï¼ï¼
 		strcpy(name[id],tmp);
 	}
 

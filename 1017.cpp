@@ -1,9 +1,9 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<math.h>
 
 
 /*
-			²Ý£¬×ø±ê¾¹È»»áÉÏ¶ËÒç³ö£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡ÄáÂê£¬¿ÓµùµÄ¼Ò»ï£¡£¡£¡£¡£¡£¡
+			è‰ï¼Œåæ ‡ç«Ÿç„¶ä¼šä¸Šç«¯æº¢å‡ºï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼å°¼çŽ›ï¼Œå‘çˆ¹çš„å®¶ä¼™ï¼ï¼ï¼ï¼ï¼ï¼
 */
 
 

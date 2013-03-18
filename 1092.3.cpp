@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<cstdio>
 #include<vector>
 #include<cmath>
@@ -10,7 +10,7 @@ typedef vector<vector<int> > mint;
 
 #define N 5000000
 
-//ËØÊı´ò±í
+//ç´ æ•°æ‰“è¡¨
 void c(mint &all)
 {
 	int m;
@@ -35,7 +35,7 @@ void c(mint &all)
 	}
 }
 
-//all[3]ÎªĞ¡ÓÚNµÄËØÊı
+//all[3]ä¸ºå°äºNçš„ç´ æ•°
 void getdata(mint &all,vector<bool> &data)
 {
 	int i;
@@ -51,7 +51,7 @@ void getdata(mint &all,vector<bool> &data)
 	}
 }
 
-//dataÎªĞ¡ÓÚN pure number·Ö²¼Çé¿ö
+//dataä¸ºå°äºN pure numberåˆ†å¸ƒæƒ…å†µ
 void  getans(vector<bool> &data,vector<int> &ans)
 {
 	int ret=0;

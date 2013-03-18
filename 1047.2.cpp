@@ -1,9 +1,9 @@
-#include<stdio.h>
+﻿#include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 
 /*
-		�ڴ汬��
+		内存爆掉
 */
 
 int main()

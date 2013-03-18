@@ -1,6 +1,6 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 
-int f[20][20][20];   //È«¾Ö±äÁ¿»á³õÊ¼»¯Îª0
+int f[20][20][20];   //å…¨å±€å˜é‡ä¼šåˆå§‹åŒ–ä¸º0
 
 int W(int a,int b,int c)
 {

@@ -1,17 +1,17 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <memory>
 #include<cstring>
      
 using namespace std;
 
-int Nmin[1000];      // ÓÃÒÔ¼ÇÂ¼µÄÒ»Î¬Êı×é
+int Nmin[1000];      // ç”¨ä»¥è®°å½•çš„ä¸€ç»´æ•°ç»„
      
 int KTail( int K )
 {
      memset( Nmin, 0, sizeof(Nmin) );    
 
      long long int num = 1;                         
-     bool flag = false;                 // ĞèÒªÒ»¸ö±ê¼Ç£¬ÓÃÒÔÅĞ¶ÏÊÇ·ñ>=1000
+     bool flag = false;                 // éœ€è¦ä¸€ä¸ªæ ‡è®°ï¼Œç”¨ä»¥åˆ¤æ–­æ˜¯å¦>=1000
 
      /*if ( K>=1000 )
      {
@@ -22,9 +22,9 @@ int KTail( int K )
      for ( int i = 1; ; ++ i)
      {
          num *= K;               // num = (K^i-1)%1000 * K
-         if ( flag || num>=1000 )     // ±ØĞë·ûºÏÌâÄ¿µÄÌõ¼ş K^i>=1000
+         if ( flag || num>=1000 )     // å¿…é¡»ç¬¦åˆé¢˜ç›®çš„æ¡ä»¶ K^i>=1000
          {
-              flag = true;               // ¿¼ÂÇµ½ÓĞ¿ÉÄÜÖ®Ç°ÊÇfalse£¬ÔÙ¸³Öµ
+              flag = true;               // è€ƒè™‘åˆ°æœ‰å¯èƒ½ä¹‹å‰æ˜¯falseï¼Œå†èµ‹å€¼
               num = num%1000;
 
               if ( Nmin[num]==0 )       

@@ -1,8 +1,8 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 
 /*
-			ÄÚ´æ²»×ã£¬£¬¿Ş£¡£¡£¡
+			å†…å­˜ä¸è¶³ï¼Œï¼Œå“­ï¼ï¼ï¼
 */
 
 typedef struct node

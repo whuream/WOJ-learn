@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<cstdio>
 #include<cmath>
 #include<vector>
@@ -32,7 +32,7 @@ void gui2(vector<int> &data,vector<int> &tmp,int a,int mid,int b,int &ans)
 	}
 	
 	while(i<=mid) tmp[k++]=data[i++];
-	while(j<=b) tmp[k++]=data[j++];//ÕâÒ»ÐÐÐèÒª£¿
+	while(j<=b) tmp[k++]=data[j++];//è¿™ä¸€è¡Œéœ€è¦ï¼Ÿ
 	for(i=a;i<=b;i++) data[i]=tmp[i];
 }
 

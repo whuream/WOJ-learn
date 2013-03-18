@@ -1,9 +1,9 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 
 
 /*
-			ÄãÃÃµÄ£¬YES£¬NOÒªĞ¡Ğ´£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡F@CK£¡£¡£¡£¡£¡£¡£¡£¡
+			ä½ å¦¹çš„ï¼ŒYESï¼ŒNOè¦å°å†™ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼F@CKï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
 */
 
 int check(int *x,int *y,int *z,int N,int sum)
