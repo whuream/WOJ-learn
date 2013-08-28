@@ -1,6 +1,11 @@
-My answer to 115 problems.
+## Answer to WOJ ##
 
-Some *.cpp may not right because they are not the final version.
+### log ###
 
-These are all sources files I created before I use github.
-I use different file name to control versions, that's not a good idea.
+*   2013/8/28T23:51
+
+    add problem 1212, 1087, 1022, 1071
+	
+*   earlier
+
+    add 115 problems
