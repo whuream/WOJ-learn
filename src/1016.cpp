@@ -1,47 +1,51 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
+
+int check(int *x,int *y,int *z,int N,int sum)
+{
+    int i,j;
+    sum*=2;
+    if(sum%N!=0) return 0;
+    else
+    {
+        sum/=N;
+        for(i=0;i<N;i++)
+        {
+            if(z[i]==0&&y[i]*2!=sum)
+            {
+                for(j=i+1;j<N;j++)
+                {
+                    if(x[j]==x[i]&&y[i]+y[j]==sum)
+                    {
+                        z[i]=z[j]=1;
+                        break;
+                    }
+                }
+                if(j==N) return 0;
+            }
+        }
+        return 1;
+    }
+}
 
 int main()
 {
-	int N;
-	while(scanf("%d",&N),N!=EOF)
-	{
-		fflush(stdin);
-		long int *a;
-		int i,j,*b;
-		double line=0;
-		a=(long int *)malloc(sizeof(long int)*2*N);
-		b=(int *)malloc(sizeof(int)*N);
-		for(i=0;i<N;i++) b[i]=0;
-		for(i=0;i<N;i++)
-		{
-			scanf("%ld %ld",&a[2*i],&a[2*i+1]);
-			fflush(stdin);
-		}
-		for(i=0;i<N;i++)
-		{
-			line+=(double)a[i*2+1];
-		}
-		line/=N;
-		/*for(i=0;i<N;i++)
-		{
-			for(j=i;j<N;j++)
-			{
-				if(b[i]==0&&b[j]==0&&a[2*i]==a[2*j]&&abs(double(a[2*i+1]+a[2*j+1])/2-line)<0.00001) b[i]=b[j]=1;
-			}
-		}*/
-		for(i=0;i<N;i++)
-		{
-			if(b[i]==0)
-			{
-				printf("NO\n");
-				break;
-			}
-		}
-		if(i==N) printf("YES\n");
-		free(a);
-		free(b);
-	}
-	return 0;
+    int N;
+    while(scanf("%d",&N)==1)
+    {
+        int *x,*y,*z,i;
+        int sum=0;
+        x=(int *)malloc(sizeof(int)*N);
+        y=(int *)malloc(sizeof(int)*N);
+        z=(int *)malloc(sizeof(int)*N);
+        for(i=0;i<N;i++)
+        {
+            scanf("%d %d",&x[i],&y[i]);
+            sum+=y[i];
+            z[i]=0;
+        }
+        if(check(x,y,z,N,sum)) printf("YES\n");
+        else printf("NO\n");
+    }
+    return 0;
 }

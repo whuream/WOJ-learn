@@ -1,101 +1,89 @@
 #include<iostream>
-#include<string>
 #include<vector>
+#include<string>
 
 using namespace std;
 
+bool replace(const string it,const string tmp)
+{
+    int len=tmp.length();
+    bool dif=false;
+
+    for(int _i=0;_i!=len;++_i)
+    {
+        if((it[_i]!=tmp[_i])&&(false==dif)) dif=true;
+        else if((it[_i]!=tmp[_i])&&(true==dif)) return false;
+    }
+    return true;
+}
+
+bool tmpless(const string it,const string tmp)
+{
+    int len=it.length();
+    bool dif=false;
+
+    for(int _i=0,_j=0;_i!=len;++_i,++_j)
+    {
+        if((it[_i]!=tmp[_j])&&(false==dif))
+        {
+            dif=true;
+            --_j;
+        }
+        else if((it[_i]!=tmp[_j])&&(true==dif)) return false;
+    }
+    return true;
+}
+
 int main()
 {
-	
-	while(1)
-{
-	int i,j,k,l;
-	vector<string> dictionary;
-	string tmp;
+    while(1)
+    {
+        vector<string> dic;
+        string tmp;
+        while(cin>>tmp)
+        {
+            if("#"==tmp) break;
+            dic.push_back(tmp);
+        }
 
-	while(1)
-	{
-		cin>>tmp;
-		if(tmp=="#") break;
-		else dictionary.push_back(tmp);
-	}
-	int len=dictionary.size();
-	if(0==len) break;
+        if(dic.empty()) break;
 
-	while(1)
-	{
-		cin>>tmp;
-		if(tmp=="#") break;
-		else
-		{
-			cout<<tmp;
-			for(i=0;i<len;i++)
-			{
-				if(tmp==dictionary[i])
-				{
-					cout<<" is correct ";
-					break;
-				}
-			}
-			if(i==len)
-			{
-				cout<<": ";
-			for(i=0;i<len;i++)
-			{
-				if(tmp.length()==dictionary[i].length())
-				{
-					int dif=-1,tmp_len=tmp.length();
-					for(j=0;j<tmp_len;j++)
-					{
-						if(tmp[j]!=dictionary[i][j])
-						{
-							if(dif!=-1) break;
-							else dif=j;
-						}
-					}
-					if(j==tmp_len) cout<<dictionary[i]<<" ";
-				}
+        while(cin>>tmp)
+        {
+            if("#"==tmp) break;
 
-				else if(tmp.length()==dictionary[i].length()-1)
-				{
-					int dif=-1,tmp_len=tmp.length();
-					for(j=0,k=0;j<tmp_len;j++,k++)
-					{
-						if(tmp[j]!=dictionary[i][k])
-						{
-							if(dif!=-1) break;
-							else
-							{
-								dif=j;
-								j--;
-							}
-						}
-					}
-					if(j==tmp_len) cout<<dictionary[i]<<" ";
-				}
+            vector<string>::iterator it=dic.begin();
+            for(;it!=dic.end();++it)
+            {
+                if(*it==tmp)
+                {
+                    cout<<tmp<<" is correct"<<endl;
+                    break;
+                }
+            }
 
-				else if(tmp.length()-1==dictionary[i].length())
-				{
-					int dif=-1,tmp_len=dictionary[i].length();
-					for(j=0,k=0;k<tmp_len;j++,k++)
-					{
-						if(tmp[j]!=dictionary[i][k])
-						{
-							if(dif!=-1) break;
-							else
-							{
-								dif=j;
-								k--;
-							}
-						}
-					}
-					if(k==tmp_len) cout<<dictionary[i]<<" ";
-				}
-			}
-			}
-		}
-		cout<<'\b'<<endl;
-	}
-}
-	return 0;
+            if(it==dic.end())
+            {
+                cout<<tmp<<":";
+                for(it=dic.begin();it!=dic.end();++it)
+                {
+                    if(it->length()==tmp.length() && replace(*it,tmp) )
+                    {
+                        cout<<" "<<*it;
+                    }
+
+                    if(it->length()==tmp.length()+1 && tmpless(*it,tmp) )
+                    {
+                        cout<<" "<<*it;
+                    }
+                    if(it->length()==tmp.length()-1 && tmpless(tmp,*it) )
+                    {
+                        cout<<" "<<*it;
+                    }
+                }
+                cout<<endl;
+            }
+        }
+    }
+    return 0;
 }

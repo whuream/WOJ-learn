@@ -1,61 +1,45 @@
+#include<iostream>
+#include<cstdio>
+#include<cmath>
 #include<vector>
 
 using namespace std;
 
-#include<stdio.h>
+typedef unsigned long long ull;
+typedef vector<vector<int> > mint;
+
+int max(int a,int b){return a>b?a:b;}
+int i,j,k;
+
+#define MMAX 1000000000
 
 int main()
 {
-	int test_case;
-	scanf("%d",&test_case);
-	for(int _test_case=0;_test_case<test_case;++_test_case)
-	{
-		int num_count,min;
-		vector<int> data;
+    int T;
+    scanf("%d",&T);
+    for(i=0;i<T;i++)
+    {
+        int N,S;
+        scanf("%d %d",&N,&S);
+        vector<int> data(N);
+        for(j=0;j<N;j++) scanf("%d",&data[j]);
 
-		scanf("%d%d",&num_count,&min);
-		for(int _num_count=0;_num_count<num_count;++_num_count)
-		{
-			int tmp;
-			scanf("%d",&tmp);
-			data.push_back(tmp);
-		}
-		vector<int>::iterator it_now=data.begin(),it_end;
-		int sum=0;
-		int min_len=0x7fffffff;
-		int tmp_len=0;
-
-		while(it_now!=data.end())
-		{
-			sum+=*it_now;
-
-			if(sum>=min)
-			{
-				it_end=it_now;
-				sum=0;
-				while(sum<min)
-				{
-					sum+=*it_now;
-					tmp_len++;
-					--it_now;
-				}
-				min_len=min_len<tmp_len?min_len:tmp_len;
-				//it_now=it_end;
-				it_now+=2;
-				sum=0;
-				tmp_len=0;
-			}
-
-			else
-			{
-				++it_now;
-			}
-		}
-		if(0x7fffffff==min_len)
-		{
-			min_len=0;
-		}
-		printf("%d\n",min_len);
-	}
-	return 0;
+        int sum=0;
+        int tmplen=0;
+        int minlen=MMAX;
+        for(j=0;j<N;j++)
+        {
+            tmplen++;
+            sum+=data[j];
+            while(sum>=S)
+            {
+                if(tmplen<minlen) minlen=tmplen;
+                sum-=data[j-tmplen+1];
+                tmplen--;
+            }
+        }
+        if(minlen==MMAX) minlen=0;
+        printf("%d\n",minlen);
+    }
+    return 0;
 }

@@ -1,74 +1,84 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include<iostream>
+#include<vector>
+#include<deque>
 
-int BFS(int **a,int Animal,int a1,int a2)
-{
-	int *queue,*visited,i,w,time=0,tmp;
-	queue=(int *)malloc(sizeof(int)*Animal);
-	visited=(int *)malloc(sizeof(int)*Animal);
-	int front=0,rear=0;
-	for(i=0;i<Animal;i++) visited[i]=-2;
-	visited[a1]=-1;
-	rear=(rear+1)%Animal;
-	queue[rear]=a1;
-	while(front!=rear)
-	{
-		front=(front+1)%Animal;
-		w=queue[front];
-		for(i=0;i<Animal;i++)
-		{
-			if(visited[i]==-2&&a[w][i]==1)
-			{
-			visited[i]=w;
-			if(i==a2)
-			{
-				tmp=a2;
-				while(visited[tmp]!=-1)
-				{
-					time++;
-					tmp=visited[tmp];
-				}
-				return time-1;
-			}
-			rear=(rear+1)%Animal;
-			queue[rear]=i;
-			}
-		}
-	}
-	return -1;
-}
+#include<stdio.h>
+
+using namespace std;
 
 int main()
 {
-	int Animal,line,Q,i,j,a1,a2;
-	scanf("%d %d",&Animal,&line);
-	fflush(stdin);
-	int **a;
-	a=(int **)malloc(sizeof(int *)*Animal);
-	for(i=0;i<Animal;i++)
-	{
-		a[i]=(int *)malloc(sizeof(int)*Animal);
-	}
-	for(i=0;i<Animal;i++)
-		for(j=0;j<Animal;j++)
-		{
-			if(i==j) a[i][j]=1;
-			else a[i][j]=0;
-		}
-	for(i=0;i<line;i++)
-	{
-		scanf("%d %d",&a1,&a2);
-		fflush(stdin);
-		a[a1][a2]=a[a2][a1]=1;
-	}
-	scanf("%d",&Q);
-	fflush(stdin);
-	for(i=0;i<Q;i++)
-	{
-		scanf("%d %d",&a1,&a2);
-		fflush(stdin);
-		if(a1==a2) printf("0\n");
-		else printf("%d\n",BFS(a,Animal,a1,a2));
-	}
-	return 0;
+    int n,m,i;
+    //cin>>n>>m;
+    scanf("%d%d",&n,&m);
+
+    vector< vector <int> > biao(n);
+
+    for(i=0;i<m;i++)
+    {
+        int ani_a,ani_b;
+        //cin>>ani_a,ani_b;
+        scanf("%d%d",&ani_a,&ani_b);
+        biao[ani_a].push_back(ani_b);
+        biao[ani_b].push_back(ani_a);
+    }
+
+    int num;
+    cin>>num;
+
+    for(i=0;i<num;i++)
+    {
+        int a,b;
+        //cin>>a>>b;
+        scanf("%d%d",&a,&b);
+
+        deque<int> duilie;
+
+        vector<int> visited(n,-2);
+
+        visited[a]=-1;
+
+        duilie.push_back(a);
+
+        while(1!=duilie.empty())
+        {
+            int p=duilie.front();
+            duilie.pop_front();
+
+            if(p!=b)
+            {
+                int size=biao[p].size();
+                int i;
+                for(i=0;i<size;i++)
+                {
+                    if(visited[biao[p][i]]==-2)
+                    {
+                        duilie.push_back(biao[p][i]);
+                        visited[biao[p][i]]=p;
+                    }
+                }
+            }
+            else break;
+        }
+
+        int p=b,count=0;
+        if(visited[p]==-2) printf("-1\n");
+        else if(a==b) printf("0\n");
+        else
+        {
+            while(1)
+            {
+                if(visited[p]==-1) break;
+                else
+                {
+                    p=visited[p];
+                    count++;
+                }
+            }
+            printf("%d\n",count-1);
+        }
+       
+    }
+
+    return 0;
 }

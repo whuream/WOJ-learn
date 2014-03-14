@@ -1,111 +1,59 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<string.h>
 
+typedef struct
+{
+    char a[1005];
+    int len;
+}cell;
+
+int add(cell *A,cell *B)
+{
+    int i,pre=0;
+    for(i=0;i<A->len;i++)
+    {
+        if(i<B->len) A->a[A->len-1-i]=A->a[A->len-1-i]+B->a[B->len-1-i]+pre-'0';
+        else A->a[A->len-1-i]+=pre;
+        if(A->a[A->len-1-i]>'9')
+        {
+            A->a[A->len-1-i]-=10;
+            pre=1;
+        }
+        else
+        {
+            pre=0;
+        }
+    }
+    return pre;
+}
 
 int main()
 {
     int n,i,j;
     scanf("%d",&n);
-    char **a;
-    a=(char **)malloc(sizeof(char *)*n);
-    for(i=0;i<n;i++)
-    a[i]=(char *)malloc(sizeof(char)*2002);
-    int *pre,*m1,*m2;
-    pre=(int *)malloc(sizeof(int)*n);
-    m1=(int *)malloc(sizeof(int)*n);
-    m2=(int *)malloc(sizeof(int)*n);
+    fflush(stdin);
     for(i=0;i<n;i++)
     {
-        pre[i]=0;
-        fflush(stdin);
-        for(j=0;j<2002;j++)
+        cell a,b;
+        int pre;
+        cell *A=&a,*B=&b;
+        scanf("%s%s",A->a,B->a);
+        A->len=strlen(A->a);
+        B->len=strlen(B->a);
+        if(a.len<b.len)
         {
-
-            a[i][j]=getchar();
-            if(a[i][j]==' ') m1[i]=j-1;
-            if(a[i][j]=='\n')
-            {
-                m2[i]=j-1;
-                break;
-            }
+            A=&b;
+            B=&a;
         }
-        if(m1[i]+1>=m2[i]-m1[i]-1)
+        if(add(A,B)==1)
         {
-            for(j=m2[i];j>m1[i]+1;j--)
-            {
-                a[i][j-m2[i]+m1[i]]=a[i][j-m2[i]+m1[i]]+a[i][j]-'0'+pre[i];
-                if(a[i][j-m2[i]+m1[i]]>'9')
-                {
-                    a[i][j-m2[i]+m1[i]]-=10;
-                    pre[i]=1;
-                }
-                else pre[i]=0;
-            }
-            for(j=2*m1[i]-m2[i]+1;j>=0;j--)
-            {
-                a[i][j]+=pre[i];
-                if(a[i][j]>'9')
-                {
-                    a[i][j]-=10;
-                    pre[i]=1;
-                }
-                else
-                {
-                    pre[i]=0;
-                    break;
-                }
-            }
+            printf("1");
         }
-        else
+        for(j=0;j<A->len;j++)
         {
-            for(j=m1[i];j>=0;j--)
-            {
-                a[i][j+m2[i]-m1[i]]=a[i][j+m2[i]-m1[i]]+a[i][j]-'0'+pre[i];
-                if(a[i][j+m2[i]-m1[i]]>'9')
-                {
-                    a[i][j+m2[i]-m1[i]]-=10;
-                    pre[i]=1;
-                }
-                else pre[i]=0;
-            }
-            for(j=m2[i]-m1[i]-1;j>m1[i]+1;j--)
-            {
-                a[i][j]+=pre[i];
-                if(a[i][j]>'9')
-                {
-                    a[i][j]-=10;
-                    pre[i]=1;
-                }
-                else
-                {
-                    pre[i]=0;
-                    break;
-                }
-            }
+            printf("%c",A->a[j]);
         }
-    }
-    for (i=0;i<n;i++)
-    {
-        if(pre[i]==1)
-        printf("%d",pre[i]);
-        if(m1[i]+1>=m2[i]-m1[i]-1)
-        {
-            for(j=0;j<m1[i]+1;j++)
-            {
-                if(a[i][j]!=' ')
-                    printf("%c",a[i][j]);
-                else break;
-            }
-        }
-        else
-        {
-            for(j=m1[i]+2;j<=m2[i];j++)
-            {
-                    printf("%c",a[i][j]);
-            }
-        }
-        if(i!=n-1)
-        printf("\n");
+            if(i!=n-1) printf("\n");
     }
     return 0;
 }

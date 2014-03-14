@@ -1,40 +1,27 @@
 #include<stdio.h>
 #include<string.h>
-#include<stdint.h>
-
 
 int main()
 {
-	char s2[200],line[205],last[15],end[]="ENDOFINPUT";
-	int len,i;
-	while(1)
-	{
-		scanf("%s",s2);
-		//if(!strcmp(s,end)) break;
-		//scanf("%[^\n]s",line);
-		//if(strlen(s2)==10) break;
-		if(s2[9]=='T') break;
-		fflush(stdin);
-		gets(line);
-		fflush(stdin);
-		scanf("%s",last);
-		fflush(stdin);
-		len=strlen(line);
-		for(i=0;i<len;i++)
-		{
-			if(line[i]>='A'&&line[i]<='Z')
-			{
-				if(line[i]>='F')
-				{
-					line[i]-=5;
-				}
-				else
-				{
-					line[i]=line[i]-4+'Z'-'A';
-				}
-			}
-		}
-		printf("%s\n",line);
-	}
-	return 0;
+    char s[100],line[250],e[100];
+    while(scanf("%s",s)==1)
+    {
+        if(!strcmp(s,"ENDOFINPUT")) break;
+       
+        getchar();
+        gets(line);
+
+        int l_line=strlen(line);
+        int i;
+        for(i=0;i<l_line;i++)
+        {
+            if(line[i]<='Z'&&line[i]>='A')
+            {
+                line[i]=(line[i]-'A'+21)%26+'A';
+            }
+        }
+        puts(line);
+        scanf("%s",e);
+    }
+    return 0;
 }
